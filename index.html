@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWARAA MASALE — स्वरा का स्वाद सबसे मजेदार</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest: #1f4d2c;
+    --forest-deep: #143420;
+    --turmeric: #e8a72c;
+    --turmeric-bright: #f4c04a;
+    --spice-red: #a12b1f;
+    --spice-red-bright: #c9382a;
+    --cream: #f6efdd;
+    --cream-warm: #efe4c8;
+    --earth-brown: #4a2e1c;
+    --earth-brown-deep: #2c1a10;
+    --ink: #1b1712;
+    --gold-line: #c99a3c;
+
+    --font-display: 'Baloo 2', 'Noto Sans Devanagari', sans-serif;
+    --font-body: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+    --font-hindi: 'Noto Sans Devanagari', sans-serif;
+
+    --space-1: 8px;  --space-2: 16px; --space-3: 24px; --space-4: 32px;
+    --space-5: 48px; --space-6: 64px; --space-7: 96px; --space-8: 128px;
+
+    --radius-s: 8px; --radius-m: 16px; --radius-l: 28px; --radius-pill: 999px;
+    --ease: cubic-bezier(.22,.68,0,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--font-body);
+    overflow-x:hidden;
+    line-height:1.5;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  ::selection{background:var(--turmeric);color:var(--ink);}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:0 var(--space-4);}
+  section{position:relative;}
+
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;letter-spacing:.2px;}
+  .eyebrow{
+    font-family:var(--font-body);font-weight:600;font-size:12.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--spice-red);display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--turmeric);display:inline-block;}
+  .hindi{font-family:var(--font-hindi);}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:var(--radius-pill);
+    font-weight:600;font-size:14px;letter-spacing:.05em;text-transform:uppercase;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease);
+  }
+  .btn-primary{background:var(--turmeric-bright);color:var(--earth-brown-deep);box-shadow:0 8px 24px rgba(232,167,44,.35);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(232,167,44,.45);}
+  .btn-outline{border:1.5px solid rgba(246,239,221,.6);color:var(--cream);}
+  .btn-outline:hover{background:rgba(246,239,221,.12);transform:translateY(-3px);}
+  .btn-dark{background:var(--forest);color:var(--cream);}
+  .btn-dark:hover{background:var(--forest-deep);transform:translateY(-3px);}
+
+  /* ===================== NAV ===================== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:22px 0;transition:padding .4s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  header.scrolled{padding:12px 0;background:rgba(20,52,32,.92);backdrop-filter:blur(14px);box-shadow:0 8px 30px rgba(0,0,0,.15);}
+  nav{display:flex;align-items:center;justify-content:space-between;}
+  .logo-mark{display:flex;align-items:center;gap:12px;}
+  .logo-badge{
+    width:46px;height:46px;border-radius:50%;background:var(--turmeric-bright);
+    border:2.5px solid var(--forest);display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-weight:800;font-size:11px;color:var(--forest);letter-spacing:.02em;
+  }
+  .logo-text{font-family:var(--font-display);font-weight:800;font-size:22px;letter-spacing:.03em;color:var(--cream);}
+  .logo-text span{color:var(--turmeric-bright);}
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{
+    font-size:13.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--cream);
+    position:relative;padding:4px 0;opacity:.88;transition:opacity .3s;
+  }
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--turmeric-bright);transition:width .35s var(--ease);}
+  .nav-links a:hover{opacity:1;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  .burger{display:none;flex-direction:column;gap:5px;width:26px;}
+  .burger span{height:2px;background:var(--cream);border-radius:2px;transition:.3s;}
+  .mobile-panel{
+    position:fixed;inset:0;background:var(--forest-deep);z-index:99;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:28px;transform:translateY(-100%);transition:transform .5s var(--ease);
+  }
+  .mobile-panel.open{transform:translateY(0);}
+  .mobile-panel a{font-family:var(--font-display);font-size:26px;color:var(--cream);font-weight:600;}
+
+  /* ===================== HERO ===================== */
+  .hero{
+    min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;
+    background:radial-gradient(ellipse 120% 90% at 50% -10%, #2a5c37 0%, var(--forest-deep) 55%, var(--earth-brown-deep) 100%);
+    padding-top:120px;padding-bottom:60px;
+  }
+  .hero-bg-texture{position:absolute;inset:0;opacity:.06;background-image:radial-gradient(circle at 20% 30%, #fff 1px, transparent 1px), radial-gradient(circle at 70% 60%, #fff 1px, transparent 1px);background-size:60px 60px, 90px 90px;}
+  .particle{position:absolute;border-radius:50%;pointer-events:none;opacity:.55;filter:blur(.5px);}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--space-6);align-items:center;position:relative;z-index:2;}
+  .hero-tag{color:var(--turmeric-bright);}
+  .hero h1{
+    font-size:clamp(38px,5.4vw,68px);color:var(--cream);line-height:1.12;margin:22px 0 22px;
+    font-family:var(--font-hindi);font-weight:700;
+  }
+  .hero-sub{color:rgba(246,239,221,.78);font-size:18px;max-width:460px;margin-bottom:38px;font-weight:300;letter-spacing:.02em;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero-visual{position:relative;height:560px;}
+  .hero-plate{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:440px;height:440px;border-radius:50%;
+    background:conic-gradient(from 180deg, #e8a72c, #c9382a, #1f4d2c, #4a2e1c, #e8a72c);
+    filter:blur(2px);opacity:.28;animation:spin 40s linear infinite;
+  }
+  @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
+  .hero-packs{position:absolute;inset:0;}
+  .hero-pack{position:absolute;border-radius:14px;box-shadow:0 30px 60px rgba(0,0,0,.45);opacity:0;transform:translateY(40px);animation:packIn 1s var(--ease) forwards;}
+  .hero-pack img{border-radius:14px;}
+  .hero-pack.p1{width:200px;top:8%;left:8%;animation-delay:.3s;}
+  .hero-pack.p2{width:190px;bottom:4%;right:2%;animation-delay:.55s;}
+  .hero-pack.p3{width:170px;bottom:26%;left:32%;z-index:3;animation-delay:.8s;}
+  @keyframes packIn{to{opacity:1;transform:translateY(0);}}
+  .scroll-cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(246,239,221,.55);font-size:11px;letter-spacing:.2em;text-transform:uppercase;z-index:2;}
+  .scroll-cue .line{width:1px;height:36px;background:linear-gradient(to bottom, rgba(246,239,221,.7), transparent);animation:scrollLine 2s ease-in-out infinite;}
+  @keyframes scrollLine{0%,100%{transform:scaleY(1);opacity:.8;}50%{transform:scaleY(.5);opacity:.3;}}
+
+  /* reveal helpers */
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease), transform .9s var(--ease);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal-scale{opacity:0;transform:scale(.94);transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal-scale.in{opacity:1;transform:scale(1);}
+  .stagger > *{transition-delay:calc(var(--i,0) * 90ms);}
+
+  /* ===================== SECTION HEADERS ===================== */
+  .sec-head{max-width:640px;margin-bottom:var(--space-6);}
+  .sec-head h2{font-size:clamp(30px,4vw,46px);margin-top:16px;line-height:1.1;color:var(--forest-deep);}
+  .sec-head p{margin-top:16px;font-size:16.5px;color:#5c5346;font-weight:300;}
+  .light .sec-head h2{color:var(--cream);}
+  .light .sec-head p{color:rgba(246,239,221,.7);}
+
+  /* ===================== PRODUCTS ===================== */
+  .products{background:var(--cream);padding:var(--space-8) 0;}
+  .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3);}
+  .product-card{
+    border-radius:var(--radius-l);padding:var(--space-4) var(--space-3) var(--space-3);
+    position:relative;overflow:hidden;cursor:pointer;min-height:520px;display:flex;flex-direction:column;
+    transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+  }
+  .product-card:hover{transform:translateY(-10px);box-shadow:0 30px 50px rgba(0,0,0,.18);}
+  .product-card .card-bg{position:absolute;inset:0;opacity:1;transition:opacity .5s;}
+  .product-card .card-glow{position:absolute;width:260px;height:260px;border-radius:50%;filter:blur(50px);opacity:.35;top:-60px;right:-60px;transition:opacity .5s, transform .6s var(--ease);}
+  .product-card:hover .card-glow{opacity:.55;transform:scale(1.15);}
+  .product-card .pc-content{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;}
+  .product-card .pc-img{flex:1;display:flex;align-items:center;justify-content:center;padding:var(--space-2) 0;}
+  .product-card .pc-img img{width:220px;transition:transform .55s var(--ease);filter:drop-shadow(0 20px 24px rgba(0,0,0,.35));}
+  .product-card:hover .pc-img img{transform:scale(1.1) translateY(-6px);}
+  .pc-tag{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.8;}
+  .pc-name{font-family:var(--font-display);font-size:23px;margin-top:8px;font-weight:700;}
+  .pc-hindi{font-family:var(--font-hindi);font-size:15px;margin-top:2px;opacity:.85;}
+  .pc-desc{font-size:13.5px;margin-top:12px;opacity:.85;font-weight:300;line-height:1.55;}
+  .pc-btn{
+    margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;padding-bottom:2px;border-bottom:1.5px solid currentColor;
+    align-self:flex-start;transition:gap .3s;
+  }
+  .product-card:hover .pc-btn{gap:14px;}
+
+  .card-banga{background:linear-gradient(160deg,#2a6238,var(--forest-deep));color:var(--cream);}
+  .card-banga .card-glow{background:var(--turmeric-bright);}
+  .card-garam{background:linear-gradient(160deg,#5c3a24,var(--earth-brown-deep));color:var(--cream);}
+  .card-garam .card-glow{background:var(--spice-red-bright);}
+  .card-mutton{background:linear-gradient(160deg,#7c2a20,#4a1611);color:var(--cream);}
+  .card-mutton .card-glow{background:var(--turmeric-bright);}
+  .card-kala{background:linear-gradient(160deg,#26221f,#0e0c0a);color:var(--cream);}
+  .card-kala .card-glow{background:var(--spice-red-bright);}
+
+  /* ===================== DETAIL OVERLAY ===================== */
+  .overlay{
+    position:fixed;inset:0;z-index:200;background:rgba(15,12,9,.7);backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .4s var(--ease);
+  }
+  .overlay.open{opacity:1;pointer-events:all;}
+  .overlay-panel{
+    background:var(--cream);border-radius:24px;max-width:920px;width:100%;max-height:88vh;overflow-y:auto;
+    display:grid;grid-template-columns:1fr 1.15fr;position:relative;transform:translateY(30px) scale(.97);transition:transform .45s var(--ease);
+  }
+  .overlay.open .overlay-panel{transform:translateY(0) scale(1);}
+  .overlay-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;background:rgba(27,23,18,.08);display:flex;align-items:center;justify-content:center;font-size:18px;z-index:3;}
+  .overlay-img{display:flex;align-items:center;justify-content:center;padding:var(--space-5);}
+  .overlay-img img{max-width:240px;filter:drop-shadow(0 24px 30px rgba(0,0,0,.28));}
+  .overlay-body{padding:var(--space-5) var(--space-5) var(--space-5) 0;}
+  .overlay-body h3{font-size:30px;color:var(--forest-deep);margin-top:10px;}
+  .overlay-body .hindi{font-size:16px;color:#8a7d63;margin-top:2px;}
+  .overlay-body .od-desc{margin:16px 0;font-size:14.5px;color:#4d4436;font-weight:300;line-height:1.65;}
+  .od-block{margin-top:20px;}
+  .od-block h4{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--spice-red);margin-bottom:10px;}
+  .od-ingredients{display:flex;flex-wrap:wrap;gap:8px;}
+  .od-ingredients span{background:rgba(31,77,44,.08);color:var(--forest);padding:6px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:500;}
+  .flavour-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;margin-bottom:8px;}
+  .dots{letter-spacing:2px;color:var(--turmeric);}
+  .dots .off{color:#d9d0ba;}
+  .od-recipe{font-size:13.5px;color:#4d4436;font-weight:400;}
+  .overlay-body .btn{margin-top:24px;}
+
+  /* ===================== COOKING FINDER ===================== */
+  .finder{background:linear-gradient(160deg,var(--forest-deep),#0f2b1a);padding:var(--space-8) 0;color:var(--cream);}
+  .finder-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:var(--space-6);align-items:start;}
+  .finder-options{display:flex;flex-direction:column;gap:12px;}
+  .finder-opt{
+    text-align:left;padding:18px 22px;border-radius:var(--radius-m);border:1.5px solid rgba(246,239,221,.18);
+    font-size:15.5px;font-weight:500;color:rgba(246,239,221,.85);transition:all .35s var(--ease);display:flex;justify-content:space-between;align-items:center;
+  }
+  .finder-opt:hover{border-color:var(--turmeric-bright);background:rgba(246,239,221,.05);}
+  .finder-opt.active{background:var(--turmeric-bright);color:var(--forest-deep);border-color:var(--turmeric-bright);font-weight:700;}
+  .finder-result{
+    border-radius:var(--radius-l);background:rgba(246,239,221,.04);border:1px solid rgba(246,239,221,.12);
+    padding:var(--space-5);min-height:380px;display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;gap:16px;
+  }
+  .finder-result img{width:150px;filter:drop-shadow(0 20px 24px rgba(0,0,0,.4));transition:opacity .4s var(--ease), transform .4s var(--ease);}
+  .finder-result .fr-label{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--turmeric-bright);}
+  .finder-result h3{font-size:28px;color:var(--cream);}
+  .finder-result .hindi{color:rgba(246,239,221,.7);font-size:15px;}
+  .finder-result p{max-width:380px;color:rgba(246,239,221,.7);font-size:14px;font-weight:300;line-height:1.6;}
+
+  /* ===================== PROCESS (spice to plate) ===================== */
+  .process{background:var(--cream);padding:var(--space-8) 0;}
+  .process-track{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3);position:relative;}
+  .process-track::before{content:"";position:absolute;top:34px;left:6%;right:6%;height:2px;background:repeating-linear-gradient(to right, var(--gold-line) 0 10px, transparent 10px 20px);z-index:0;}
+  .process-step{position:relative;z-index:1;text-align:center;padding:0 var(--space-1);}
+  .process-num{
+    width:68px;height:68px;border-radius:50%;background:var(--cream);border:2px solid var(--gold-line);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-family:var(--font-display);
+    font-weight:700;font-size:20px;color:var(--spice-red);transition:transform .5s var(--ease), background .5s;
+  }
+  .process-step.in .process-num{background:var(--turmeric-bright);border-color:var(--turmeric-bright);color:var(--forest-deep);transform:scale(1.08);}
+  .process-step h4{font-family:var(--font-display);font-size:18px;color:var(--forest-deep);margin-bottom:8px;}
+  .process-step p{font-size:13.5px;color:#6b6153;font-weight:300;line-height:1.55;}
+
+  /* ===================== RECIPES ===================== */
+  .kitchen{background:var(--cream-warm);padding:var(--space-8) 0;}
+  .recipe-scroll{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,1fr);gap:var(--space-3);overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory;}
+  .recipe-scroll::-webkit-scrollbar{height:6px;}
+  .recipe-scroll::-webkit-scrollbar-thumb{background:var(--gold-line);border-radius:6px;}
+  .recipe-card{scroll-snap-align:start;background:var(--cream);border-radius:var(--radius-l);overflow:hidden;box-shadow:0 10px 30px rgba(74,46,28,.08);transition:transform .45s var(--ease);}
+  .recipe-card:hover{transform:translateY(-8px);}
+  .recipe-img{height:190px;position:relative;overflow:hidden;}
+  .recipe-img .ri-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;}
+  .recipe-body{padding:22px;}
+  .recipe-meta{display:flex;gap:14px;font-size:11.5px;color:#8a7d63;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;}
+  .recipe-body h4{font-family:var(--font-display);font-size:19px;color:var(--forest-deep);margin-bottom:6px;}
+  .recipe-uses{font-size:12.5px;color:var(--spice-red);font-weight:600;margin-bottom:14px;}
+  .recipe-link{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--forest);border-bottom:1.5px solid var(--forest);padding-bottom:2px;}
+
+  /* ===================== WHY SWARAA ===================== */
+  .why{background:var(--forest-deep);padding:var(--space-8) 0;color:var(--cream);}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3);}
+  .why-card{padding:var(--space-4) var(--space-3);border-radius:var(--radius-l);background:rgba(246,239,221,.04);border:1px solid rgba(246,239,221,.1);transition:background .4s, transform .4s var(--ease);}
+  .why-card:hover{background:rgba(246,239,221,.08);transform:translateY(-6px);}
+  .why-icon{width:52px;height:52px;margin-bottom:22px;}
+  .why-card h4{font-family:var(--font-display);font-size:18px;margin-bottom:10px;color:var(--turmeric-bright);}
+  .why-card p{font-size:13.5px;color:rgba(246,239,221,.68);font-weight:300;line-height:1.6;}
+
+  /* ===================== BRAND STORY ===================== */
+  .story{background:var(--cream);padding:var(--space-8) 0;}
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);align-items:center;}
+  .story-visual{position:relative;height:460px;border-radius:var(--radius-l);overflow:hidden;background:linear-gradient(150deg,#3a6b45,var(--forest-deep));display:flex;align-items:center;justify-content:center;}
+  .story-visual .sv-ring{position:absolute;width:340px;height:340px;border-radius:50%;border:1px dashed rgba(246,239,221,.3);}
+  .story-visual .sv-ring2{position:absolute;width:260px;height:260px;border-radius:50%;border:1px dashed rgba(246,239,221,.2);}
+  .story-visual .sv-quote{position:relative;z-index:2;color:var(--cream);font-family:var(--font-hindi);font-size:26px;text-align:center;max-width:280px;line-height:1.6;}
+  .story h2{font-size:clamp(28px,3.6vw,42px);color:var(--forest-deep);line-height:1.18;margin:16px 0 22px;}
+  .story p{color:#5c5346;font-size:15.5px;font-weight:300;line-height:1.75;margin-bottom:16px;}
+  .story-signoff{font-family:var(--font-hindi);font-size:18px;color:var(--spice-red);margin-top:20px;}
+
+  /* ===================== TESTIMONIALS ===================== */
+  .testimonials{background:var(--earth-brown-deep);padding:var(--space-8) 0;color:var(--cream);overflow:hidden;}
+  .test-track{display:flex;gap:var(--space-3);transition:transform .6s var(--ease);}
+  .test-card{
+    min-width:calc(33.333% - 16px);background:rgba(246,239,221,.05);border:1px solid rgba(246,239,221,.1);
+    border-radius:var(--radius-l);padding:var(--space-4);
+  }
+  .test-stars{color:var(--turmeric-bright);font-size:15px;letter-spacing:2px;margin-bottom:16px;}
+  .test-quote{font-size:14.5px;font-weight:300;line-height:1.7;color:rgba(246,239,221,.85);margin-bottom:22px;min-height:105px;}
+  .test-person{display:flex;align-items:center;gap:12px;}
+  .test-avatar{width:42px;height:42px;border-radius:50%;background:var(--turmeric-bright);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;color:var(--forest-deep);}
+  .test-name{font-size:13.5px;font-weight:600;}
+  .test-loc{font-size:11.5px;color:rgba(246,239,221,.5);}
+  .test-nav{display:flex;gap:12px;margin-top:var(--space-4);}
+  .test-nav button{width:40px;height:40px;border-radius:50%;border:1px solid rgba(246,239,221,.25);display:flex;align-items:center;justify-content:center;transition:.3s;}
+  .test-nav button:hover{background:var(--turmeric-bright);color:var(--forest-deep);border-color:var(--turmeric-bright);}
+
+  /* ===================== FINAL CTA ===================== */
+  .final-cta{
+    position:relative;padding:var(--space-8) 0;background:radial-gradient(ellipse 100% 80% at 50% 20%, #7c2a20, var(--earth-brown-deep) 70%);
+    text-align:center;color:var(--cream);overflow:hidden;
+  }
+  .final-cta h2{font-family:var(--font-hindi);font-size:clamp(30px,5vw,54px);line-height:1.2;max-width:780px;margin:20px auto 34px;}
+  .final-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .final-cta .eyebrow{justify-content:center;}
+
+  /* ===================== FOOTER ===================== */
+  footer{background:var(--forest-deep);color:rgba(246,239,221,.75);padding:var(--space-7) 0 var(--space-4);}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:var(--space-5);padding-bottom:var(--space-6);border-bottom:1px solid rgba(246,239,221,.1);}
+  .footer-brand .logo-text{color:var(--cream);}
+  .footer-tag{font-family:var(--font-hindi);margin-top:14px;font-size:15px;color:var(--turmeric-bright);}
+  .footer-desc{margin-top:16px;font-size:13.5px;font-weight:300;max-width:280px;line-height:1.6;}
+  .footer-col h5{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--turmeric-bright);margin-bottom:18px;}
+  .footer-col a{display:block;font-size:13.5px;margin-bottom:11px;font-weight:300;transition:color .3s;}
+  .footer-col a:hover{color:var(--cream);}
+  .newsletter-form{display:flex;margin-top:14px;border:1px solid rgba(246,239,221,.2);border-radius:var(--radius-pill);overflow:hidden;}
+  .newsletter-form input{flex:1;background:transparent;border:none;padding:12px 16px;font-size:13px;color:var(--cream);outline:none;}
+  .newsletter-form button{background:var(--turmeric-bright);color:var(--forest-deep);padding:0 20px;font-size:12.5px;font-weight:700;text-transform:uppercase;}
+  .footer-social{display:flex;gap:12px;margin-top:20px;}
+  .footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(246,239,221,.2);display:flex;align-items:center;justify-content:center;font-size:13px;transition:.3s;margin-bottom:0;}
+  .footer-social a:hover{background:var(--turmeric-bright);color:var(--forest-deep);border-color:var(--turmeric-bright);}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:var(--space-3);font-size:12px;flex-wrap:wrap;gap:10px;}
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:1024px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{height:400px;margin-top:20px;}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .process-track{grid-template-columns:repeat(2,1fr);row-gap:var(--space-4);}
+    .process-track::before{display:none;}
+    .story-grid{grid-template-columns:1fr;}
+    .story-visual{height:340px;order:-1;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .finder-grid{grid-template-columns:1fr;}
+    .test-card{min-width:calc(50% - 12px);}
+    .overlay-panel{grid-template-columns:1fr;}
+    .overlay-img{padding-bottom:0;}
+  }
+  @media (max-width:680px){
+    .nav-links,.nav-cta .btn-outline{display:none;}
+    .burger{display:flex;}
+    .product-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .process-track{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;gap:var(--space-4);}
+    .test-card{min-width:100%;}
+    .wrap{padding:0 20px;}
+    .hero{padding-top:100px;}
+    .hero-visual{height:320px;}
+    .hero-pack.p1{width:130px;} .hero-pack.p2{width:120px;} .hero-pack.p3{width:110px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+  }
+  a:focus-visible, button:focus-visible{outline:2px solid var(--turmeric-bright);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <div class="logo-mark">
+        <div class="logo-badge">SW</div>
+        <div class="logo-text">SWARAA <span>MASALE</span></div>
+      </div>
+      <div class="nav-links">
+        <a href="#products">Products</a>
+        <a href="#kitchen">Recipes</a>
+        <a href="#story">Our Story</a>
+        <a href="#why">Quality</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="#products" class="btn btn-outline">Shop Now</a>
+        <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#products">Products</a>
+  <a href="#kitchen">Recipes</a>
+  <a href="#story">Our Story</a>
+  <a href="#why">Quality</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg-texture"></div>
+  <div id="particles"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow hero-tag">स्वरा का स्वाद सबसे मजेदार…</div>
+      <h1>स्वाद का असली एहसास,<br>स्वरा के मसालों के साथ!</h1>
+      <p class="hero-sub">Authentic flavour. Everyday magic. Four generations-old spice blends, ground fresh for the way India actually cooks.</p>
+      <div class="hero-ctas">
+        <a href="#products" class="btn btn-primary">Explore Masalas</a>
+        <a href="#kitchen" class="btn btn-outline">Discover Recipes</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-plate"></div>
+      <div class="hero-packs">
+        <div class="hero-pack p1"><img src="assets/garam-masala.png" alt="Swaraa Garam Masala pack"></div>
+        <div class="hero-pack p2"><img src="assets/mutton-masala.png" alt="Swaraa Mutton Masala pack"></div>
+        <div class="hero-pack p3"><img src="assets/banga-gravy-masala.png" alt="Swaraa Banga Gravy Masala pack"></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="products" id="products">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Our Blends</div>
+      <h2>Meet the Flavours of Swaraa</h2>
+      <p>Every blend has a story. Every dish has a flavour.</p>
+    </div>
+    <div class="product-grid stagger" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT DETAIL OVERLAY ============ -->
+<div class="overlay" id="productOverlay">
+  <div class="overlay-panel">
+    <button class="overlay-close" id="overlayClose">✕</button>
+    <div class="overlay-img"><img id="odImg" src="" alt=""></div>
+    <div class="overlay-body">
+      <div class="eyebrow" id="odTag"></div>
+      <h3 id="odName"></h3>
+      <div class="hindi" id="odHindi"></div>
+      <p class="od-desc" id="odDesc"></p>
+      <div class="od-block">
+        <h4>Key Ingredients</h4>
+        <div class="od-ingredients" id="odIngredients"></div>
+      </div>
+      <div class="od-block">
+        <h4>Flavour Profile</h4>
+        <div id="odFlavour"></div>
+      </div>
+      <div class="od-block">
+        <h4>Best Used With</h4>
+        <p class="od-recipe" id="odUses"></p>
+      </div>
+      <a href="#contact" class="btn btn-dark">Buy Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ COOKING FINDER ============ -->
+<section class="finder" id="finder">
+  <div class="wrap">
+    <div class="sec-head light reveal">
+      <div class="eyebrow">Find Your Masala</div>
+      <h2>What Are You Cooking Today?</h2>
+      <p>Tell us the mood of your meal — Swaraa will tell you the blend.</p>
+    </div>
+    <div class="finder-grid">
+      <div class="finder-options" id="finderOptions"></div>
+      <div class="finder-result reveal" id="finderResult"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPICE TO PLATE ============ -->
+<section class="process" id="quality">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Our Process</div>
+      <h2>From Spice to Plate</h2>
+      <p>Every packet travels a careful journey before it reaches your kitchen.</p>
+    </div>
+    <div class="process-track" id="processTrack"></div>
+  </div>
+</section>
+
+<!-- ============ RECIPES ============ -->
+<section class="kitchen" id="kitchen">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Swaraa Kitchen</div>
+      <h2>Turn Every Meal Into a Memory</h2>
+      <p>Editorial-worthy recipes from real Maharashtrian kitchens, built around Swaraa blends.</p>
+    </div>
+    <div class="recipe-scroll" id="recipeScroll"></div>
+  </div>
+</section>
+
+<!-- ============ WHY SWARAA ============ -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-head light reveal">
+      <div class="eyebrow">Why Swaraa?</div>
+      <h2>Built on Trust, Ground for Flavour</h2>
+    </div>
+    <div class="why-grid stagger" id="whyGrid"></div>
+  </div>
+</section>
+
+<!-- ============ BRAND STORY ============ -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-visual reveal-scale">
+      <div class="sv-ring"></div>
+      <div class="sv-ring2"></div>
+      <div class="sv-quote hindi">"स्वरा का स्वाद<br>सबसे मजेदार…"</div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Our Story</div>
+      <h2>Every Home Has a Flavour.</h2>
+      <p>Every Indian kitchen carries its own memories — the aroma of spices toasting in hot oil, the sound of a pressure cooker whistling through a Sunday afternoon, the first bite of a curry that tastes exactly like it did when your grandmother made it.</p>
+      <p>Swaraa was built around that feeling. Our blends are made the way Maharashtrian households have made them for generations — measured by hand, roasted patiently, and packed while the aroma is still at its peak — so that familiar taste finds its way into your kitchen too.</p>
+      <div class="story-signoff">— स्वरा का स्वाद सबसे मजेदार…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="sec-head light reveal">
+      <div class="eyebrow">Customer Love</div>
+      <h2>Loved in Kitchens.<br>Remembered in Every Bite.</h2>
+    </div>
+    <div style="overflow:hidden;">
+      <div class="test-track" id="testTrack"></div>
+    </div>
+    <div class="test-nav">
+      <button id="testPrev" aria-label="Previous reviews">←</button>
+      <button id="testNext" aria-label="Next reviews">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;color:var(--turmeric-bright);">Bring Swaraa Home</div>
+    <h2 class="reveal">Bring Home the Taste of Swaraa.</h2>
+    <div class="final-ctas">
+      <a href="#products" class="btn btn-primary">Explore Masalas</a>
+      <a href="#products" class="btn btn-outline">Shop Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-mark"><div class="logo-badge">SW</div><div class="logo-text">SWARAA <span>MASALE</span></div></div>
+        <div class="footer-tag hindi">स्वरा का स्वाद सबसे मजेदार…</div>
+        <p class="footer-desc">Authentic Maharashtrian spice blends, made for everyday kitchens across India.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+      <div class="footer-col">
+          <h5>Products</h5>
+          <a href="#products">Banga Gravy Masala</a>
+          <a href="#products">Garam Masala</a>
+          <a href="#products">Mutton Masala</a>
+          <a href="#products">Kala Masala</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#story">Our Story</a>
+        <a href="#kitchen">Recipes</a>
+        <a href="#why">Quality</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Stay Updated</h5>
+        <p style="font-size:13.5px;font-weight:300;">Get new recipes and offers in your inbox.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Your email address" aria-label="Email address">
+          <button type="button">Join</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2020 Swaraa Masale. All rights reserved.</div>
+      <div>Made with care in  Jalna , Maharashtra , India.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ DATA ============ */
+const products = [
+  {
+    id:'banga', tag:'RICH · BALANCED', name:'Banga Gravy Masala', hindi:'बंगा ग्रेवी मसाला', img:'assets/banga-gravy-masala.png',
+    cardClass:'card-banga',
+    desc:'A rich, balanced gravy base built for slow-cooked Maharashtrian curries — the blend that turns a simple gravy into the centrepiece of the meal.',
+    ingredients:['Coriander','Turmeric','Red Chilli','Cloves','Bay Leaf','Black Pepper'],
+    flavour:[['Rich',4],['Balanced',4],['Aromatic',3]],
+    uses:'Chicken gravy, mutton gravy, and everyday vegetable curries that need body and depth.'
+  },
+  {
+    id:'garam', tag:'AROMATIC · WARM', name:'Garam Masala', hindi:'गरम मसाला', img:'assets/garam-masala.png',
+    cardClass:'card-garam',
+    desc:'The everyday essential — warm, whole-spice aroma that lifts any dal, sabzi, or curry with a single spoon.',
+    ingredients:['Cinnamon','Cardamom','Star Anise','Cloves','Bay Leaf','Black Pepper'],
+    flavour:[['Aromatic',4],['Warm',4],['Rich',3]],
+    uses:'Dal, paneer curries, biryani, and finishing touches on almost any Indian dish.'
+  },
+  {
+    id:'mutton', tag:'BOLD · DEEP', name:'Mutton Masala', hindi:'मटन मसाला', img:'assets/mutton-masala.png',
+    cardClass:'card-mutton',
+    desc:'Bold and deeply spiced, made specifically to stand up to the richness of mutton and cut straight through into every piece.',
+    ingredients:['Red Chilli','Coriander','Black Pepper','Cardamom','Cloves','Turmeric'],
+    flavour:[['Spicy',4],['Bold',4],['Deep',4]],
+    uses:'Mutton curry, lamb chops, and other slow-cooked red meat gravies.'
+  },
+  {
+    id:'kala', tag:'SMOKY · EARTHY', name:'Kala Masala', hindi:'काला मसाला', img:'assets/kala-masala.png',
+    cardClass:'card-kala',
+    desc:'A traditional Maharashtrian dark spice blend, roasted until smoky and deep — the soul of authentic Kolhapuri-style cooking.',
+    ingredients:['Roasted Coriander','Sesame','Dry Coconut','Black Pepper','Star Anise','Cloves'],
+    flavour:[['Smoky',4],['Earthy',4],['Traditional',4]],
+    uses:'Kala masala bhaji, traditional Maharashtrian thecha-style curries, and bhakri accompaniments.'
+  }
+];
+
+const finderMap = [
+  {label:'Rich Gravy', match:'banga'},
+  {label:'Mutton Curry', match:'mutton'},
+  {label:'Everyday Curry', match:'garam'},
+  {label:'Traditional Maharashtrian Food', match:'kala'},
+  {label:'Spicy & Bold', match:'mutton'}
+];
+
+const processSteps = [
+  {n:'01', title:'Carefully Selected Ingredients', desc:'Whole spices sourced for aroma and purity, checked before a single grain enters the blend.'},
+  {n:'02', title:'Blended with Care', desc:'Hand-measured recipes, roasted patiently to release full flavour.'},
+  {n:'03', title:'Packed Fresh', desc:'Sealed while the aroma is at its peak, locking in freshness.'},
+  {n:'04', title:'Ready for Your Kitchen', desc:'From our roasting pans straight to your everyday cooking.'}
+];
+
+const recipes = [
+  {emoji:'🍖', name:'Mutton Curry', time:'60 min', diff:'Medium', masala:'Mutton Masala', color:'#7c2a20'},
+  {emoji:'🍗', name:'Chicken Gravy', time:'40 min', diff:'Easy', masala:'Banga Gravy Masala', color:'#e8a72c'},
+  {emoji:'🌶️', name:'Kala Masala Bhaji', time:'25 min', diff:'Easy', masala:'Kala Masala', color:'#26221f'},
+  {emoji:'🧀', name:'Paneer Masala', time:'30 min', diff:'Easy', masala:'Garam Masala', color:'#5c3a24'},
+  {emoji:'🍛', name:'Kolhapuri Rassa', time:'50 min', diff:'Medium', masala:'Kala Masala', color:'#26221f'}
+];
+
+const whyItems = [
+  {title:'Pure Ingredients', desc:'Carefully selected spices, sourced for aroma and consistency.'},
+  {title:'Authentic Flavour', desc:'Traditional taste, ground fresh, in every single blend.'},
+  {title:'Quality First', desc:'Consistent quality checked into every packet we seal.'},
+  {title:'Made for Every Kitchen', desc:'Everyday masalas priced and packed for every home.'}
+];
+
+const testimonials = [
+  {name:'Sunita Patil', loc:'Kolhapur, MH', quote:'The Kala Masala tastes exactly like the one my aaji used to make. That smoky aroma is unmistakable.'},
+  {name:'Rahul Deshmukh', loc:'Pune, MH', quote:'Mutton Masala has become non-negotiable in our house now — bold flavour without needing ten extra spices.'},
+  {name:'Anjali Kadam', loc:'Nashik, MH', quote:'Banga Gravy Masala turned my Sunday chicken curry into something my whole family asks for by name.'},
+  {name:'Vikram Jadhav', loc:'Satara, MH', quote:'One spoon of Garam Masala at the end of cooking and the whole kitchen smells like festival season.'},
+  {name:'Priya Shinde', loc:'Sangli, MH', quote:'Consistent quality every single packet. That matters more than people realise when you cook daily.'},
+  {name:'Omkar More', loc:'Ratnagiri, MH', quote:'Finally a masala brand that tastes like home instead of a supermarket shelf.'}
+];
+
+/* ============ RENDER: PRODUCTS ============ */
+const grid = document.getElementById('productGrid');
+products.forEach((p,i)=>{
+  const el = document.createElement('div');
+  el.className = `product-card reveal ${p.cardClass}`;
+  el.style.setProperty('--i', i);
+  el.innerHTML = `
+    <div class="pc-content">
+      <div class="pc-tag">${p.tag}</div>
+      <div class="pc-img"><img src="${p.img}" alt="${p.name} packet"></div>
+      <div class="pc-name">${p.name}</div>
+      <div class="pc-hindi hindi">${p.hindi}</div>
+      <div class="pc-desc">${p.desc}</div>
+      <div class="pc-btn">View Details →</div>
+    </div>
+    <div class="card-glow"></div>`;
+  el.addEventListener('click', ()=>openProduct(p.id));
+  grid.appendChild(el);
+});
+
+/* ============ OVERLAY ============ */
+const overlay = document.getElementById('productOverlay');
+function openProduct(id){
+  const p = products.find(x=>x.id===id);
+  document.getElementById('odImg').src = p.img;
+  document.getElementById('odImg').alt = p.name;
+  document.getElementById('odTag').textContent = p.tag;
+  document.getElementById('odName').textContent = p.name;
+  document.getElementById('odHindi').textContent = p.hindi;
+  document.getElementById('odDesc').textContent = p.desc;
+  document.getElementById('odIngredients').innerHTML = p.ingredients.map(i=>`<span>${i}</span>`).join('');
+  document.getElementById('odFlavour').innerHTML = p.flavour.map(([label,val])=>{
+    const filled = '●'.repeat(val);
+    const empty = '○'.repeat(5-val);
+    return `<div class="flavour-row"><span>${label}</span><span class="dots">${filled}<span class="off">${empty}</span></span></div>`;
+  }).join('');
+  document.getElementById('odUses').textContent = p.uses;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+document.getElementById('overlayClose').addEventListener('click', closeOverlay);
+overlay.addEventListener('click', e=>{ if(e.target===overlay) closeOverlay(); });
+function closeOverlay(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+
+/* ============ FINDER ============ */
+const finderOptionsEl = document.getElementById('finderOptions');
+const finderResultEl = document.getElementById('finderResult');
+finderMap.forEach((f,i)=>{
+  const btn = document.createElement('button');
+  btn.className = 'finder-opt';
+  btn.innerHTML = `<span>${f.label}</span><span>→</span>`;
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.finder-opt').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    showFinderResult(f.match);
+  });
+  finderOptionsEl.appendChild(btn);
+});
+function showFinderResult(id){
+  const p = products.find(x=>x.id===id);
+  finderResultEl.style.opacity=0;
+  setTimeout(()=>{
+    finderResultEl.innerHTML = `
+      <div class="fr-label">Recommended For You</div>
+      <img src="${p.img}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <div class="hindi">${p.hindi}</div>
+      <p>${p.desc}</p>`;
+    finderResultEl.style.opacity=1;
+  },200);
+}
+// default state
+finderResultEl.innerHTML = `<div class="fr-label">Pick a Mood</div><p style="color:rgba(246,239,221,.5);">Choose what you're cooking, and we'll match the right Swaraa blend for it.</p>`;
+
+/* ============ PROCESS ============ */
+const processTrack = document.getElementById('processTrack');
+processSteps.forEach(s=>{
+  const el = document.createElement('div');
+  el.className = 'process-step reveal';
+  el.innerHTML = `<div class="process-num">${s.n}</div><h4>${s.title}</h4><p>${s.desc}</p>`;
+  processTrack.appendChild(el);
+});
+
+/* ============ RECIPES ============ */
+const recipeScroll = document.getElementById('recipeScroll');
+recipes.forEach(r=>{
+  const el = document.createElement('div');
+  el.className = 'recipe-card reveal';
+  el.innerHTML = `
+    <div class="recipe-img" style="background:${r.color};">
+      <div class="ri-fallback">${r.emoji}</div>
+    </div>
+    <div class="recipe-body">
+      <div class="recipe-meta"><span>⏱ ${r.time}</span><span>${r.diff}</span></div>
+      <h4>${r.name}</h4>
+      <div class="recipe-uses">Uses ${r.masala}</div>
+      <div class="recipe-link">View Recipe →</div>
+    </div>`;
+  recipeScroll.appendChild(el);
+});
+
+/* ============ WHY ============ */
+const whyGrid = document.getElementById('whyGrid');
+const whyIcons = [
+  `<svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="#f4c04a" stroke-width="1.5"/><path d="M17 28c2 5 6 8 9 8s7-3 9-8" stroke="#f4c04a" stroke-width="1.6" stroke-linecap="round"/><circle cx="20" cy="21" r="2" fill="#f4c04a"/><circle cx="32" cy="21" r="2" fill="#f4c04a"/></svg>`,
+  `<svg viewBox="0 0 52 52" fill="none"><path d="M26 6 L44 16 V32 C44 40 36 46 26 48 C16 46 8 40 8 32 V16 Z" stroke="#f4c04a" stroke-width="1.5"/><path d="M18 26l6 6 12-12" stroke="#f4c04a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  `<svg viewBox="0 0 52 52" fill="none"><rect x="10" y="10" width="32" height="32" rx="6" stroke="#f4c04a" stroke-width="1.5"/><path d="M18 26h16M26 18v16" stroke="#f4c04a" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+  `<svg viewBox="0 0 52 52" fill="none"><path d="M26 8c8 6 14 6 14 6v14c0 10-6 16-14 18-8-2-14-8-14-18V14s6 0 14-6Z" stroke="#f4c04a" stroke-width="1.5"/><path d="M20 26h12M26 20v12" stroke="#f4c04a" stroke-width="1.6" stroke-linecap="round"/></svg>`
+];
+whyItems.forEach((w,i)=>{
+  const el = document.createElement('div');
+  el.className='why-card reveal';
+  el.style.setProperty('--i', i);
+  el.innerHTML = `<div class="why-icon">${whyIcons[i]}</div><h4>${w.title}</h4><p>${w.desc}</p>`;
+  whyGrid.appendChild(el);
+});
+
+/* ============ TESTIMONIALS ============ */
+const testTrack = document.getElementById('testTrack');
+testimonials.forEach(t=>{
+  const el = document.createElement('div');
+  el.className='test-card';
+  el.innerHTML = `
+    <div class="test-stars">★★★★★</div>
+    <div class="test-quote">"${t.quote}"</div>
+    <div class="test-person">
+      <div class="test-avatar">${t.name.charAt(0)}</div>
+      <div><div class="test-name">${t.name}</div><div class="test-loc">${t.loc}</div></div>
+    </div>`;
+  testTrack.appendChild(el);
+});
+let testIndex = 0;
+function updateTestTrack(){
+  const perView = window.innerWidth <= 680 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
+  const maxIndex = Math.max(0, testimonials.length - perView);
+  testIndex = Math.min(testIndex, maxIndex);
+  const cardWidth = testTrack.children[0].getBoundingClientRect().width + 24;
+  testTrack.style.transform = `translateX(-${testIndex*cardWidth}px)`;
+}
+document.getElementById('testNext').addEventListener('click', ()=>{ testIndex++; updateTestTrack(); });
+document.getElementById('testPrev').addEventListener('click', ()=>{ testIndex=Math.max(0,testIndex-1); updateTestTrack(); });
+window.addEventListener('resize', updateTestTrack);
+setTimeout(updateTestTrack, 300);
+
+/* ============ NAV SCROLL STATE ============ */
+const headerEl = document.getElementById('siteHeader');
+window.addEventListener('scroll', ()=>{
+  headerEl.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* ============ MOBILE MENU ============ */
+const burger = document.getElementById('burgerBtn');
+const mobilePanel = document.getElementById('mobilePanel');
+burger.addEventListener('click', ()=> mobilePanel.classList.toggle('open'));
+mobilePanel.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> mobilePanel.classList.remove('open')));
+
+/* ============ SCROLL REVEAL ============ */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el=> io.observe(el));
+
+/* ============ FLOATING PARTICLES (hero) ============ */
+const particleContainer = document.getElementById('particles');
+const particleColors = ['#f4c04a','#c9382a','#f6efdd'];
+for(let i=0;i<26;i++){
+  const p = document.createElement('div');
+  const size = Math.random()*5+3;
+  p.className='particle';
+  p.style.width=size+'px';
+  p.style.height=size+'px';
+  p.style.left=Math.random()*100+'%';
+  p.style.top=Math.random()*100+'%';
+  p.style.background=particleColors[i%3];
+  p.style.animation=`floaty ${8+Math.random()*10}s ease-in-out ${Math.random()*5}s infinite`;
+  particleContainer.appendChild(p);
+}
+const styleTag = document.createElement('style');
+styleTag.textContent = `@keyframes floaty{0%,100%{transform:translateY(0) translateX(0);}50%{transform:translateY(-30px) translateX(14px);}}`;
+document.head.appendChild(styleTag);
+</script>
+</body>
+</html>
